@@ -1,4 +1,4 @@
-package com.hoping.VISUALIZATION.common;
+package com.hoping.VISUALIZATION.utils.hbase;
 
 import com.hoping.VISUALIZATION.entity.HbasePageModel;
 import org.apache.commons.lang.StringUtils;

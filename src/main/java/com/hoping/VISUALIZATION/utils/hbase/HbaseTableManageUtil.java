@@ -1,5 +1,6 @@
-package com.hoping.VISUALIZATION.common;
+package com.hoping.VISUALIZATION.utils.hbase;
 
+import com.hoping.VISUALIZATION.common.StaticParams;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
@@ -22,8 +23,8 @@ public class HbaseTableManageUtil {
 
     public static Connection getConnection() throws IOException {
         conf = HBaseConfiguration.create();
-        conf.set("hbase.zookeeper.quorum", "bigdata-slave01,bigdata-slave02,bigdata-slave03");
-        conf.set("hbase.zookeeper.property.clientPort", "2181");
+        conf.set("hbase.zookeeper.quorum", StaticParams.HBASEHOST);
+        conf.set("hbase.zookeeper.property.clientPort", StaticParams.HBASEPORT);
         conf.set("hbase.defaults.for.version.skip", "true");
         connection = ConnectionFactory.createConnection(conf);
         return connection;
