@@ -9,6 +9,8 @@ package com.hoping.VISUALIZATION.common;
  */
 public class RequestParams {
 
+    public static String ERRORSTR = "wrong request!";
+
     public static String TABLENAME = "tableName";
 
     public static String PAGESIZE = "pageSize";
@@ -22,5 +24,9 @@ public class RequestParams {
     public static String COLUMN = "column";
 
     public static String VALUE = "value";
+
+    public static String TYPE = "type";
+
+    public static String TIME = "time";
 
 }

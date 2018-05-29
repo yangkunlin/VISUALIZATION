@@ -1,7 +1,7 @@
 package com.hoping.VISUALIZATION.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.hoping.VISUALIZATION.common.HbaseFilterUtils;
+import com.hoping.VISUALIZATION.common.hbase.HbaseFilterUtils;
 import com.hoping.VISUALIZATION.common.RequestParams;
 import com.hoping.VISUALIZATION.common.StaticParams;
 import com.hoping.VISUALIZATION.service.impl.HbaseServiceImpl;

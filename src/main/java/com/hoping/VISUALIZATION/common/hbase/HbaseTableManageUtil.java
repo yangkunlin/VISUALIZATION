@@ -1,4 +1,4 @@
-package com.hoping.VISUALIZATION.common;
+package com.hoping.VISUALIZATION.common.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
