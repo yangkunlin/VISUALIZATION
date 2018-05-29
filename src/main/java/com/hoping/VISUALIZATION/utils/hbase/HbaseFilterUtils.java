@@ -1,4 +1,4 @@
-package com.hoping.VISUALIZATION.common.hbase;
+package com.hoping.VISUALIZATION.utils.hbase;
 
 import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.util.Bytes;

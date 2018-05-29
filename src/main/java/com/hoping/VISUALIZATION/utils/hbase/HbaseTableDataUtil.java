@@ -1,4 +1,4 @@
-package com.hoping.VISUALIZATION.common.hbase;
+package com.hoping.VISUALIZATION.utils.hbase;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.client.Result;

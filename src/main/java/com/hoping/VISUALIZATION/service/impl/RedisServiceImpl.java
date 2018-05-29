@@ -1,6 +1,6 @@
 package com.hoping.VISUALIZATION.service.impl;
 
-import com.hoping.VISUALIZATION.common.JedisUtil;
+import com.hoping.VISUALIZATION.utils.JedisUtil;
 import com.hoping.VISUALIZATION.common.RequestParams;
 import com.hoping.VISUALIZATION.common.StaticParams;
 import com.hoping.VISUALIZATION.entity.RedisResultModel;

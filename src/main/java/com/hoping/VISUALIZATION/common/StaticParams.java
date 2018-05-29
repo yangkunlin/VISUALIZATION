@@ -15,13 +15,15 @@ public class StaticParams {
 
     public static int PAGESIZE = 20;
 
-    public static String REDISCLUSTERHOST[] = {"bigdata-slave01", "bigdata-slave02", "bigdata-slave03"};
+    public static String COLUMNDESCRIPTOR = "columnDescriptor";
 
-    //  val REDISCLUSTERHOST: (String, String, String) = ("10.141.43.10", "10.141.38.244", "10.141.50.68")
-//
-    public static int REDISCLUSTERPORT[] = {7000, 7001};
+    public static String HBASEHOST = "bigdata-slave01,bigdata-slave02,bigdata-slave03";
 
-    public static String COLUMNDESCRIPTOR = "columnDescritor";
+    public static String HBASEPORT = "2181";
+
+    public static String[] REDISCLUSTERHOST = {"bigdata-slave01", "bigdata-slave02", "bigdata-slave03"};
+
+    public static int[] REDISCLUSTERPORT = {7000, 7001};
 
     public static String REDISONLINEKEY = "online";
 

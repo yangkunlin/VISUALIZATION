@@ -1,7 +1,6 @@
 package com.hoping.VISUALIZATION.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.hoping.VISUALIZATION.common.hbase.HbaseFilterUtils;
 import com.hoping.VISUALIZATION.common.RequestParams;
 import com.hoping.VISUALIZATION.common.StaticParams;
 import com.hoping.VISUALIZATION.service.impl.HbaseServiceImpl;
@@ -104,7 +103,7 @@ public class HbaseController {
         }
 
         FilterList filterList = new FilterList();
-        filterList.addFilter(HbaseFilterUtils.getSingleColumnValueFilter(familyColumn, column, value));
+        filterList.addFilter(com.hoping.VISUALIZATION.utils.hbase.HbaseFilterUtils.getSingleColumnValueFilter(familyColumn, column, value));
 //        return hbaseService.getResultByScan(jsonObject.getString(RequestParams.TABLENAME), filterList);
         return queryWithPage(body, filterList);
     }

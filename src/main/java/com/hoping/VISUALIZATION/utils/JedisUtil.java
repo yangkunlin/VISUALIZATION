@@ -1,5 +1,6 @@
-package com.hoping.VISUALIZATION.common;
+package com.hoping.VISUALIZATION.utils;
 
+import com.hoping.VISUALIZATION.common.StaticParams;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;

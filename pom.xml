@@ -32,6 +32,8 @@
         <fileuploadVersion>1.3.1</fileuploadVersion>
         <lombokVersion>1.16.10</lombokVersion>
         <hbaseVersion>1.4.2</hbaseVersion>
+        <jedisVersion>2.9.0</jedisVersion>
+        <fastjsonVersion>1.2.8</fastjsonVersion>
     </properties>
 
 
@@ -173,14 +175,14 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.8</version>
+            <version>${fastjsonVersion}</version>
         </dependency>
 
         <!-- redis java插件 -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
+            <version>${jedisVersion}</version>
         </dependency>
 
     </dependencies>
