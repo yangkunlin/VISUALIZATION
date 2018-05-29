@@ -2,9 +2,6 @@ package com.hoping.VISUALIZATION.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hoping.VISUALIZATION.common.*;
-import com.hoping.VISUALIZATION.common.hbase.HbasePageFilterUtil;
-import com.hoping.VISUALIZATION.common.hbase.HbaseTableDataUtil;
-import com.hoping.VISUALIZATION.common.hbase.HbaseTableManageUtil;
 import com.hoping.VISUALIZATION.entity.HbasePageModel;
 import com.hoping.VISUALIZATION.service.HbaseService;
 import com.hoping.VISUALIZATION.utils.hbase.HbasePageFilterUtil;
@@ -43,7 +40,7 @@ public class HbaseServiceImpl implements HbaseService {
 //        hbaseConf.set("hbase.zookeeper.property.clientPort", "2181");
 //        hbaseConf.set("hbase.defaults.for.version.skip", "true");
 //    }
-    Connection connection = HbaseTableManageUtil.getConnection();
+    private Connection connection = HbaseTableManageUtil.getConnection();
 
     public HbaseServiceImpl() throws IOException {
     }
@@ -53,8 +50,8 @@ public class HbaseServiceImpl implements HbaseService {
 
         Admin admin = connection.getAdmin();
         HTableDescriptor desc = new HTableDescriptor(TableName.valueOf(tableName));
-        for (int i = 0; i < family.length; i++) {
-            desc.addFamily(new HColumnDescriptor(family[i]));
+        for (String aFamily : family) {
+            desc.addFamily(new HColumnDescriptor(aFamily));
         }
         if (admin.tableExists(TableName.valueOf(tableName))) {
             logger.info("table Exists!");
@@ -77,7 +74,7 @@ public class HbaseServiceImpl implements HbaseService {
         int columnSize = column.length;
 
         for (int i = 0; i < columnSize; i++) {
-            put.add(Bytes.toBytes(columnFamily), Bytes.toBytes(column[i]), Bytes.toBytes(value[i]));
+            put.addColumn(Bytes.toBytes(columnFamily), Bytes.toBytes(column[i]), Bytes.toBytes(value[i]));
         }
 
         table.put(put);
@@ -109,13 +106,12 @@ public class HbaseServiceImpl implements HbaseService {
     @Override
     public String getResultByScan(String tableName, FilterList filterList) throws Exception {
         Scan scan = new Scan();
-        ResultScanner results = null;
-        Table table = connection.getTable(TableName.valueOf(tableName));
+        ResultScanner results;
         ObjectMapper objectMapper = new ObjectMapper();
 
         scan.setFilter(filterList);
 
-        try {
+        try (Table table = connection.getTable(TableName.valueOf(tableName))) {
             results = table.getScanner(scan);
             List<Map<String, Object>> resList = new ArrayList<>();
             for (Result result : results) {
@@ -127,8 +123,6 @@ public class HbaseServiceImpl implements HbaseService {
             logger.error(ex.toString());
             return ex.toString();
         } finally {
-            results.close();
-            table.close();
             connection.close();
 
         }
@@ -219,13 +213,12 @@ public class HbaseServiceImpl implements HbaseService {
         } catch (Exception ex) {
             logger.error(ex.toString());
             return ex.toString();
-        } finally {
         }
 
     }
 
     //把result转换成map，方便返回json数据
-    public static Map<String, Object> results2Map(Result result) {
+    private static Map<String, Object> results2Map(Result result) {
         Map<String, Object> resMap = new HashMap<>();
         List<Cell> listCell = result.listCells();
         Map<String, Object> tempMap = new HashMap<>();

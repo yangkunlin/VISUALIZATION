@@ -1,12 +1,10 @@
 package com.hoping.VISUALIZATION.service.impl;
 
-import com.hoping.VISUALIZATION.utils.JedisUtil;
+import com.hoping.VISUALIZATION.utils.redis.JedisUtil;
 import com.hoping.VISUALIZATION.common.RequestParams;
 import com.hoping.VISUALIZATION.common.StaticParams;
 import com.hoping.VISUALIZATION.entity.RedisResultModel;
 import com.hoping.VISUALIZATION.service.RedisService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -18,9 +16,6 @@ import java.util.Map;
  */
 @Service
 public class RedisServiceImpl implements RedisService{
-
-    // 声明静态配置
-    private static Logger logger = LogManager.getRootLogger();
 
     @Override
     public Object getResult(String type, String dateStr) throws Exception {

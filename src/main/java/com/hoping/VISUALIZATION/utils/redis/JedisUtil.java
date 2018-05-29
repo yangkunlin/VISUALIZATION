@@ -1,4 +1,4 @@
-package com.hoping.VISUALIZATION.utils;
+package com.hoping.VISUALIZATION.utils.redis;
 
 import com.hoping.VISUALIZATION.common.StaticParams;
 import redis.clients.jedis.HostAndPort;
