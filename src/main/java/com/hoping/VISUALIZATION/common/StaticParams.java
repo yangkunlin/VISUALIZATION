@@ -1,7 +1,5 @@
 package com.hoping.VISUALIZATION.common;
 
-import java.util.ArrayList;
-
 /**
  * Description:
  *
@@ -40,5 +38,17 @@ public class StaticParams {
     public static String REDISAGAINONLINEKEY = "again_online";
 
     public static String REDISAGAINLOGINEDONLINEKEY = "again_logined_online";
+
+    public static String REDISOSKEY = "os";
+
+    public static String REDISLOGINEDOSKEY = "logined_os";
+
+    public static String REDISMODELKEY = "model";
+
+    public static String REDISLOGINEDMODELKEY = "logined_model";
+
+    public static String REDISCHANNELKEY = "channel";
+
+    public static String REDISLOGINEDCHANNELKEY = "logined_channel";
 
 }

@@ -74,6 +74,42 @@ public class RedisServiceImpl implements RedisService{
             setRedisResultModelByMap(dateStr, key, redisResultModel);
             return redisResultModel;
         }
+        if (type.equals(StaticParams.REDISOSKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISOSKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
+        if (type.equals(StaticParams.REDISLOGINEDOSKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISLOGINEDOSKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
+        if (type.equals(StaticParams.REDISMODELKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISMODELKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
+        if (type.equals(StaticParams.REDISLOGINEDMODELKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISLOGINEDMODELKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
+        if (type.equals(StaticParams.REDISCHANNELKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISCHANNELKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
+        if (type.equals(StaticParams.REDISLOGINEDCHANNELKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISLOGINEDCHANNELKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
 
         return RequestParams.ERRORSTR;
     }
