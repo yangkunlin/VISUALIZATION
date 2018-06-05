@@ -110,6 +110,12 @@ public class RedisServiceImpl implements RedisService{
             setRedisResultModelByMap(dateStr, key, redisResultModel);
             return redisResultModel;
         }
+        if (type.equals(StaticParams.REDISSEARCHKEY)) {
+            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
+            key = StaticParams.REDISSEARCHKEY;
+            setRedisResultModelByMap(dateStr, key, redisResultModel);
+            return redisResultModel;
+        }
 
         return RequestParams.ERRORSTR;
     }

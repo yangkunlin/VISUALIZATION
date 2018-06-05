@@ -11,6 +11,8 @@ public class RequestParams {
 
     public static String ERRORSTR = "wrong request!";
 
+    public static String SUCCESSSTR = "success!";
+
     public static String TABLENAME = "tableName";
 
     public static String PAGESIZE = "pageSize";

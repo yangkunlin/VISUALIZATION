@@ -51,4 +51,10 @@ public class StaticParams {
 
     public static String REDISLOGINEDCHANNELKEY = "logined_channel";
 
+    public static String REDISSEARCHKEY = "search";
+
+    public static String REDISFLUSHDBKEY = "flushdb";
+
+    public static String MYPASSWORD = "2018-03-12";
+
 }
