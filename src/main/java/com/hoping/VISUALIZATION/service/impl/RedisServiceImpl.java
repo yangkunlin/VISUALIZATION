@@ -1,13 +1,15 @@
 package com.hoping.VISUALIZATION.service.impl;
 
-import com.hoping.VISUALIZATION.utils.redis.JedisUtil;
 import com.hoping.VISUALIZATION.common.RequestParams;
 import com.hoping.VISUALIZATION.common.StaticParams;
 import com.hoping.VISUALIZATION.entity.RedisResultModel;
 import com.hoping.VISUALIZATION.service.RedisService;
+import com.hoping.VISUALIZATION.utils.redis.JedisUtil;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Author:  yangkunlin
@@ -15,109 +17,57 @@ import java.util.Map;
  * Domain:  pla.hc10
  */
 @Service
-public class RedisServiceImpl implements RedisService{
+public class RedisServiceImpl implements RedisService {
 
     @Override
     public Object getResult(String type, String dateStr) throws Exception {
 
-        String key;
+        RedisResultModel<String, String> redisResultModelValueIsString = new RedisResultModel<>();
+        RedisResultModel<String, Map<String, String>> redisResultModelValueIsMap = new RedisResultModel<>();
 
-        if (type.equals(StaticParams.REDISONLINEKEY)) {
-            key = StaticParams.REDISONLINEKEY;
-            RedisResultModel<String, String> redisResultModel = new RedisResultModel<>();
-            setRedisResultModelByString(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
+        Set<String> stringSet = new HashSet<>();
+        Set<String> mapSet = new HashSet<>();
 
-        if (type.equals(StaticParams.REDISLOGINEDONLINEKEY)) {
-            RedisResultModel<String, String> redisResultModel = new RedisResultModel<>();
-            setRedisResultModelByString(dateStr, StaticParams.REDISLOGINEDONLINEKEY, redisResultModel);
-            return redisResultModel;
-        }
+        stringSet.add(StaticParams.REDISONLINEKEY);
+        stringSet.add(StaticParams.REDISLOGINEDONLINEKEY);
+        stringSet.add(StaticParams.REDISAGAINONLINEKEY);
+        stringSet.add(StaticParams.REDISAGAINLOGINEDONLINEKEY);
+        stringSet.add(StaticParams.REDISNEWACTIVATIONKEY);
+        stringSet.add(StaticParams.REDISNEWUSERKEY);
+        stringSet.add(StaticParams.REDISNEWIOSKEY);
+        stringSet.add(StaticParams.REDISCLICKTOTALKEY);
+        stringSet.add(StaticParams.REDISCLICKUIDKEY);
+        stringSet.add(StaticParams.REDISUIDKEY);
+        stringSet.add(StaticParams.REDISCOUNTDEVKEY);
+        stringSet.add(StaticParams.REDISLEFTKEY);
+        stringSet.add(StaticParams.REDISNEXTKEY);
 
-        if (type.equals(StaticParams.REDISAGAINONLINEKEY)) {
-            RedisResultModel<String, String> redisResultModel = new RedisResultModel<>();
-            setRedisResultModelByString(dateStr, StaticParams.REDISAGAINONLINEKEY, redisResultModel);
-            return redisResultModel;
-        }
+        mapSet.add(StaticParams.REDISAREAKEY);
+        mapSet.add(StaticParams.REDISLOGINEDAREAKEY);
+        mapSet.add(StaticParams.REDISPATHKEY);
+        mapSet.add(StaticParams.REDISLOGINEDPATHKEY);
+        mapSet.add(StaticParams.REDISOSKEY);
+        mapSet.add(StaticParams.REDISLOGINEDOSKEY);
+        mapSet.add(StaticParams.REDISMODELKEY);
+        mapSet.add(StaticParams.REDISLOGINEDMODELKEY);
+        mapSet.add(StaticParams.REDISCHANNELKEY);
+        mapSet.add(StaticParams.REDISLOGINEDCHANNELKEY);
+        mapSet.add(StaticParams.REDISSEARCHKEY);
+        mapSet.add(StaticParams.REDISACTKEY);
+        mapSet.add(StaticParams.REDISCLICKHOURKEY);
+        mapSet.add(StaticParams.REDISSTAYKEY);
 
-        if (type.equals(StaticParams.REDISAGAINLOGINEDONLINEKEY)) {
-            RedisResultModel<String, String> redisResultModel = new RedisResultModel<>();
-            setRedisResultModelByString(dateStr, StaticParams.REDISAGAINONLINEKEY, redisResultModel);
-            return redisResultModel;
-        }
 
-        if (type.equals(StaticParams.REDISAREAKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISAREAKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
 
-        if (type.equals(StaticParams.REDISLOGINEDAREAKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISLOGINEDAREAKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
+        if (stringSet.contains(type)) {
+            setRedisResultModelByString(dateStr, type, redisResultModelValueIsString);
+            return redisResultModelValueIsString;
+        } else if (mapSet.contains(type)) {
+            setRedisResultModelByMap(dateStr, type, redisResultModelValueIsMap);
+            return redisResultModelValueIsMap;
+        }  else {
+            return RequestParams.ERRORSTR;
         }
-
-        if (type.equals(StaticParams.REDISPATHKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISPATHKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-
-        if (type.equals(StaticParams.REDISLOGINEDPATHKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISLOGINEDPATHKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISOSKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISOSKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISLOGINEDOSKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISLOGINEDOSKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISMODELKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISMODELKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISLOGINEDMODELKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISLOGINEDMODELKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISCHANNELKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISCHANNELKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISLOGINEDCHANNELKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISLOGINEDCHANNELKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-        if (type.equals(StaticParams.REDISSEARCHKEY)) {
-            RedisResultModel<String, Map<String, String>> redisResultModel = new RedisResultModel<>();
-            key = StaticParams.REDISSEARCHKEY;
-            setRedisResultModelByMap(dateStr, key, redisResultModel);
-            return redisResultModel;
-        }
-
-        return RequestParams.ERRORSTR;
     }
 
     private void setRedisResultModelByMap(String dateStr, String key, RedisResultModel<String, Map<String, String>> redisResultModel) {

@@ -53,8 +53,30 @@ public class StaticParams {
 
     public static String REDISSEARCHKEY = "search";
 
-    public static String REDISFLUSHDBKEY = "flushdb";
+    public static String REDISNEWACTIVATIONKEY = "new_activation";
 
-    public static String MYPASSWORD = "2018-03-12";
+    public static String REDISACTKEY = "act";
+
+    public static String REDISCLICKHOURKEY = "click_hour";
+
+    public static String REDISSTAYKEY = "stay";
+
+    public static String REDISNEWUSERKEY = "new_user";
+
+    public static String REDISNEWIOSKEY = "new_ios";
+
+    public static String REDISCLICKTOTALKEY = "click_total";
+
+    public static String REDISCLICKUIDKEY = "click_uid";
+
+    public static String REDISUIDKEY = "uid";
+
+    public static String REDISCOUNTDEVKEY = "count_dev";
+
+    public static String REDISLEFTKEY = "left";
+
+    public static String REDISNEXTKEY = "next";
+
+
 
 }
