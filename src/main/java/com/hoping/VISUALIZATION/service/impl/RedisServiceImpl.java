@@ -39,8 +39,7 @@ public class RedisServiceImpl implements RedisService {
         stringSet.add(StaticParams.REDISCLICKUIDKEY);
         stringSet.add(StaticParams.REDISUIDKEY);
         stringSet.add(StaticParams.REDISCOUNTDEVKEY);
-        stringSet.add(StaticParams.REDISLEFTKEY);
-        stringSet.add(StaticParams.REDISNEXTKEY);
+        stringSet.add(StaticParams.REDISLEFTNEXTKEY);
 
         mapSet.add(StaticParams.REDISAREAKEY);
         mapSet.add(StaticParams.REDISLOGINEDAREAKEY);
@@ -58,14 +57,13 @@ public class RedisServiceImpl implements RedisService {
         mapSet.add(StaticParams.REDISSTAYKEY);
 
 
-
         if (stringSet.contains(type)) {
             setRedisResultModelByString(dateStr, type, redisResultModelValueIsString);
             return redisResultModelValueIsString;
         } else if (mapSet.contains(type)) {
             setRedisResultModelByMap(dateStr, type, redisResultModelValueIsMap);
             return redisResultModelValueIsMap;
-        }  else {
+        } else {
             return RequestParams.ERRORSTR;
         }
     }

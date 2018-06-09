@@ -73,10 +73,6 @@ public class StaticParams {
 
     public static String REDISCOUNTDEVKEY = "count_dev";
 
-    public static String REDISLEFTKEY = "left";
-
-    public static String REDISNEXTKEY = "next";
-
-
+    public static String REDISLEFTNEXTKEY = "left_next";
 
 }
