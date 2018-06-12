@@ -4,6 +4,7 @@ import com.hoping.VISUALIZATION.common.RequestParams;
 import com.hoping.VISUALIZATION.common.StaticParams;
 import com.hoping.VISUALIZATION.entity.RedisResultModel;
 import com.hoping.VISUALIZATION.service.RedisService;
+import com.hoping.VISUALIZATION.utils.SortUtil;
 import com.hoping.VISUALIZATION.utils.redis.JedisUtil;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +56,7 @@ public class RedisServiceImpl implements RedisService {
         mapSet.add(StaticParams.REDISACTKEY);
         mapSet.add(StaticParams.REDISCLICKHOURKEY);
         mapSet.add(StaticParams.REDISSTAYKEY);
+        mapSet.add(StaticParams.REDISGIDKEY);
 
 
         if (stringSet.contains(type)) {
@@ -71,7 +73,7 @@ public class RedisServiceImpl implements RedisService {
     private void setRedisResultModelByMap(String dateStr, String key, RedisResultModel<String, Map<String, String>> redisResultModel) {
         redisResultModel.setKey(key + "_" + dateStr);
         if (JedisUtil.getJedis().exists(key + "_" + dateStr)) {
-            redisResultModel.setValue(JedisUtil.getJedis().hgetAll(key + "_" + dateStr));
+            redisResultModel.setValue(SortUtil.sortMapByValue(JedisUtil.getJedis().hgetAll(key + "_" + dateStr)));
         } else {
             redisResultModel.setValue(null);
         }

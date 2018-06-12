@@ -110,8 +110,8 @@
 
         <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
 
-        <logger name="org.springframework" level="WARN"></logger>
-        <logger name="org.elasticsearch" level="WARN"></logger>
+        <logger name="org.springframework" level="WARN"/>
+        <logger name="org.elasticsearch" level="WARN"/>
 
         <root level="info">
 

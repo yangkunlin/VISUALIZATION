@@ -75,4 +75,6 @@ public class StaticParams {
 
     public static String REDISLEFTNEXTKEY = "left_next";
 
+    public static String REDISGIDKEY = "gid";
+
 }
